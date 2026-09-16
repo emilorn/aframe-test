@@ -1,0 +1,23 @@
+{
+  "imagePath": "image-targets/guide_luminance.png",
+  "metadata": null,
+  "name": "guide",
+  "type": "PLANAR",
+  "properties": {
+    "left": 256,
+    "top": 0,
+    "width": 1536,
+    "height": 2048,
+    "isRotated": true,
+    "originalWidth": 2048,
+    "originalHeight": 2048
+  },
+  "resources": {
+    "originalImage": "guide_original.png",
+    "croppedImage": "guide_cropped.png",
+    "thumbnailImage": "guide_thumbnail.png",
+    "luminanceImage": "guide_luminance.png"
+  },
+  "created": 1789564565621,
+  "updated": 1789564565621
+}

@@ -4,6 +4,7 @@ const onxrloaded = () => {
       require('../image-targets/model-target.json'),
       require('../image-targets/video-target.json'),
       require('../image-targets/one.json'),
+      require('../image-targets/guide.json'),
     ],
   })
 }
