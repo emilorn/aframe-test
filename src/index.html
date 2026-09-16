@@ -17,7 +17,7 @@
 
 <body>
   <script src="bundle.js"></script>
-  <a-scene xrextras-gesture-detector landing-page xrextras-loading xrextras-runtime-error
+  <a-scene stats xrextras-gesture-detector landing-page xrextras-loading xrextras-runtime-error
     renderer="colorManagement:true" xrweb="disableWorldTracking: true">
 
     <a-assets>
@@ -52,10 +52,6 @@
       <a-entity xrextras-one-finger-rotate gltf-model="#jelly-glb"></a-entity>
     </xrextras-named-image-target>
 
-    <xrextras-named-image-target name="guide">
-      <!-- Add a child entity that can be rotated independently of the image target. -->
-      <a-entity xrextras-one-finger-rotate gltf-model="#jelly-glb"></a-entity>
-    </xrextras-named-image-target>
 
     <xrextras-named-image-target name="guide_fixed">
       <!-- Add a child entity that can be rotated independently of the image target. -->
