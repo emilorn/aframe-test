@@ -4,85 +4,48 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
+
   <title>A-Frame: Image Targets Example</title>
-  
   <script crossorigin="anonymous" src="./external/scripts/8frame-1.5.0.min.js"></script>
+  
   <script src="https://cdn.jsdelivr.net/npm/@8thwall/engine-binary@1/dist/xr.js" async crossorigin="anonymous" data-preload-chunks="slam"></script>
   <script src="https://cdn.jsdelivr.net/npm/@8thwall/landing-page@1/dist/landing-page.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@8thwall/xrextras@1/dist/xrextras.js" crossorigin="anonymous"></script>
-
-  <style>
-    #desktop-popup {
-      display: none; /* Hidden by default */
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0, 0, 0, 0.9);
-      color: white;
-      z-index: 99999; /* Keeps it on top of 8th Wall and A-Frame */
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      font-family: sans-serif;
-    }
-    .popup-content {
-      background: #222;
-      padding: 30px;
-      border-radius: 12px;
-      max-width: 400px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    }
-    .popup-content h2 { margin-top: 0; }
-  </style>
 </head>
-
 <body>
-  <div id="desktop-popup">
-    <div class="popup-content">
-      <h2>Mobile Device Required</h2>
-      <p>This Augmented Reality experience requires a mobile device camera. Please open this link on your smartphone or tablet.</p>
-    </div>
-  </div>
-
-  <script>
-    // Simple User-Agent check for mobile devices
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
-    if (!isMobile) {
-      // If it's a desktop, show the popup
-      document.getElementById('desktop-popup').style.display = 'flex';
-      
-      // Optional: Delete the A-Frame scene so the webcam doesn't activate on desktop
-      document.addEventListener("DOMContentLoaded", function() {
-        const scene = document.querySelector('a-scene');
-        if (scene) scene.remove();
-      });
-    }
-  </script>
-
   <script src="bundle.js"></script>
-  
   <a-scene xrextras-gesture-detector landing-page xrextras-loading xrextras-runtime-error
     renderer="colorManagement:true" xrweb="disableWorldTracking: true">
-    
+
     <a-assets>
+      <!-- Credit to Poly by Google for the model: https://poly.google.com/view/dA5osnS0Rzj -->
       <a-asset-item id="jelly-glb" src="assets/jellyfish-model.glb"></a-asset-item>
       <img id="jelly-thumb" src="assets/video-target.jpg">
-      <video id="jelly-video" autoplay muted crossorigin="anonymous" loop="true" src="assets/jellyfish-video.mp4"></video>
+      <video id="jelly-video" autoplay muted crossorigin="anonymous" loop="true" src="assets/jellyfish-video.mp4">
+      </video>
     </a-assets>
 
-    <a-camera position="0 4 10" raycaster="objects: .cantap" cursor="fuse: false; rayOrigin: mouse;"></a-camera>
+    <a-camera position="0 4 10" raycaster="objects: .cantap" cursor="fuse: false; rayOrigin: mouse;">
+    </a-camera>
+
     <a-light type="directional" intensity="0.5" position="1 1 1"></a-light>
+
     <a-light type="ambient" intensity="1"></a-light>
 
+    <!-- Note: "name:" must be set to the name of the image target -->
     <xrextras-named-image-target name="video-target">
       <a-entity xrextras-play-video="video: #jelly-video; thumb: #jelly-thumb; canstop: true"
         geometry="primitive: plane; height: 1; width: 0.79;"></a-entity>
     </xrextras-named-image-target>
 
+    <!-- Note: "name:" must be set to the name of the image target  -->
     <xrextras-named-image-target name="model-target">
+      <!-- Add a child entity that can be rotated independently of the image target. -->
       <a-entity xrextras-one-finger-rotate gltf-model="#jelly-glb"></a-entity>
     </xrextras-named-image-target>
+
   </a-scene>
 
 </body>
+
 </html>
