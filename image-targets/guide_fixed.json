@@ -1,0 +1,23 @@
+{
+  "imagePath": "image-targets/guide_fixed_luminance.png",
+  "metadata": null,
+  "name": "guide_fixed",
+  "type": "PLANAR",
+  "properties": {
+    "left": 33,
+    "top": 0,
+    "width": 1394,
+    "height": 1859,
+    "isRotated": false,
+    "originalWidth": 1459,
+    "originalHeight": 1859
+  },
+  "resources": {
+    "originalImage": "guide_fixed_original.png",
+    "croppedImage": "guide_fixed_cropped.png",
+    "thumbnailImage": "guide_fixed_thumbnail.png",
+    "luminanceImage": "guide_fixed_luminance.png"
+  },
+  "created": 1789564735987,
+  "updated": 1789564735987
+}
